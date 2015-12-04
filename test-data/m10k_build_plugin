@@ -2,10 +2,10 @@
 #m10k_build_plugin test file
 
 # Unpack source
-tar xf gzip*t*z
+hg clone https://hg.mozilla.org/mozilla-central
 
 # Goes into project directorry
-cd gzip-[0-9]*
+cd mozilla*
 
 # Read configuration to be tested
 read PERMUTATION
@@ -13,8 +13,8 @@ read PERMUTATION
 # Set FLAGS to the options from permutation
 export CFLAGS="$PERMUTATION"
 
-./configure || exit $?
+./mach mercurial-setup || exit $?
 
-make -j8
+./mach build
 
 
